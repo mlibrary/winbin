@@ -1,5 +1,20 @@
 $user, $verb, $groups = $args
 
+if (!$user) {
+  Write-Output 'usage: userer [USER [add|del GROUP ...]]'
+  Write-Output ''
+  Write-Output 'userer USER: search for groups named GROUP, print members if exact match found'
+  Write-Output 'userer USER add GROUP ...: add USER to GROUP (or list of groups)'
+  Write-Output 'userer USER del GROUP ...: delete USER from GROUP (or list of groups)'
+  Write-Output ''
+  exit
+}
+
+if (!$user) {
+  Write-Output 'usage: userer [user [add|del group ...]]'
+  exit
+}
+
 $user_obj = $false
 try {
   $user_obj = Get-ADUser $user
@@ -22,6 +37,8 @@ if ($user_obj) {
       }
     }
   } else {
+    # only print membership when we aren't making changes, as Get-ADPrincipalGroupMembership
+    # output won't be consistant until several seconds after running Add-ADGroupMember
     Get-ADPrincipalGroupMembership $user | Sort-Object SamAccountName | Select-Object SamAccountName
   }
 } else {
