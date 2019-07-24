@@ -1,7 +1,7 @@
 $group, $verb, $members = $args
 
 if (!$group) {
-  Write-Output 'usage: grouper [GROUP [add|del USER ...]]'
+  Write-Output 'usage: grouper GROUP [add|del USER ...]'
   Write-Output ''
   Write-Output 'grouper GROUP: search for groups named GROUP, print members if exact match found'
   Write-Output 'grouper GROUP add USER ...: add USER (or list of users) to GROUP, print final membership'
