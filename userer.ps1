@@ -3,7 +3,7 @@ $user, $verb, $groups = $args
 if (!$user) {
   Write-Output 'usage: userer USER [add|del GROUP ...]'
   Write-Output ''
-  Write-Output 'userer USER: search for groups named GROUP, print members if exact match found'
+  Write-Output 'userer USER: search for users named USER, print group membership if exact match found'
   Write-Output 'userer USER add GROUP ...: add USER to GROUP (or list of groups)'
   Write-Output 'userer USER del GROUP ...: delete USER from GROUP (or list of groups)'
   Write-Output ''
